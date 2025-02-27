@@ -1,0 +1,65 @@
+```mermaid
+flowchart TD
+    %% Define nodes with descriptive IDs
+    A[Customer drops off parcel] --> B[Branch staff registers parcel]
+    B --> C[Parcel assigned tracking ID]
+    C --> D[Branch sorts parcels by destination]
+    D --> E[Parcels sent to regional Courier Hub]
+    
+    %% Hub processing
+    E --> F[Hub receives and scans parcel]
+    F --> J[Hub sorts parcel by destination]
+    
+    %% %% Decision for international vs domestic
+    %% G --> H{International?}
+    %% H -->|Yes| I[Customs clearance initiated]
+    %% H -->|No| J[Loaded onto transport vehicle]
+    %% I --> J
+    
+    %% Dispatch to destination
+    J --> K[Dispatched to destination branch]
+    K --> L[Destination branch scans parcel]
+    L --> M[Recipient notified or delivery scheduled]
+    
+    %% Final delivery
+    M --> N[Delivery person picks up parcel]
+    N --> O[Customer receives parcel]
+    O --> P[Customer signs confirmation]
+    
+    %% Add subgraph for visual organization
+    subgraph "Courier Branch (Origin)"
+        A
+        B
+        C
+        D
+    end
+    
+    subgraph "Courier Hub"
+        E
+        F
+        %% G
+        %% H
+        %% I
+        J
+    end
+    
+    subgraph "Courier Branch (Destination)"
+        K
+        L
+        M
+        N
+    end
+    
+    subgraph "Customer (Recipient)"
+        O
+        P
+    end
+    
+    %% Style
+    classDef branch fill:#d4f1f9,stroke:#333,stroke-width:1px
+    classDef hub fill:#ffecb3,stroke:#333,stroke-width:1px
+    classDef customer fill:#e6ffe6,stroke:#333,stroke-width:1px
+    class A,B,C,D,K,L,M,N branch
+    class E,F,G,H,I,J hub
+    class O,P customer
+```
