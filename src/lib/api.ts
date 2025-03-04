@@ -67,6 +67,13 @@ const mockUsers: User[] = [
     email: 'john@example.com',
     role: 'CUSTOMER',
   },
+  {
+    id: 'customer2',
+    username: 'jane_customer',
+    password: '1234',
+    email: 'john@example.com',
+    role: 'CUSTOMER',
+  }
 ];
 
 // Mock Offices
